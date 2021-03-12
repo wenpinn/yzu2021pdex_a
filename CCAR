@@ -38,15 +38,15 @@ public:
 ////////////////////////////////////////////////////////////////////
 void start()
 {
-cout << "car's start" << endl;  //*轟隆隆隆隆衝衝衝衝引擎發動//
+cout << "car's start" << endl;  //*car moving//
 }
 void stop()
 {
-cout << "car's stop" << endl;  //*塞車了怎麼辦ＰＵＩＰＵＩ//
+cout << "car's stop" << endl;  //*car stopped//
 }
 void turn()
 {
-cout << "car's turn" << endl; //*頭搖又尾擺 飄移境界//
+cout << "car's turn" << endl; //*car drift//
 }
 };
 //--------------------------
@@ -56,11 +56,11 @@ CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
 void Abs()
 {
-cout << "bmw's abs" << endl; //*煞車 注意安全！//
+cout << "bmw's abs" << endl; //*H//
 }
 void start()
 {
-cout << "bmw's start" << endl; //*引擎發動so come on//
+cout << "bmw's start" << endl; //*car goes//
 CCAR::start();//scope operator
 
 }
