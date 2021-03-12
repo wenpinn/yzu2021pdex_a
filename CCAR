@@ -1,19 +1,26 @@
-//
-// main.cpp
-// OOP_DEMO_CAR
-//
-// Created by wpfang on 2021/3/8.
-// Copyright © 2021 wpfang. All rights reserved.
-//
+/**
+ *@auther周鉅峰
+ *@version 1.0
+ *@since 2021/3/12
+ *main.cpp
+ *OOP_DEMO_CAR
+ *Created by wpfang on 2021/3/8.
+ *Copyright © 2021 wpfang. All rights reserved.*/
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR {
+設定class CCAR class CCAR { 
+/**
+ *設立nickname為private*/
 private:
 string nickname;
+/**
+ *設立light,wheel 為protected*/
 protected:
 int light;
 int wheel;
+/**
+ *設立CCAR():light(2)建構子以下為public*/
 public:
 CCAR() :light(2)
 {
@@ -23,9 +30,13 @@ cout << "car's constructor(wheel=" << wheel << ")" << endl;
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
+/**
+ *指標把nickname指向nickname*/
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ *CCAR解構子*/
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
@@ -43,10 +54,15 @@ void turn()
 cout << "car's turn" << endl;
 }
 };
-//--------------------------
+/**
+ *class CBNW 繼承 class CCAR 之屬性*/--------------------------
 class CBMW : public CCAR {
 public:
+/**
+ *CBNW 建構子*/
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+ *CBNW 解構子*/
 ~CBMW() { cout << "bmw's destructor" << endl; }
 void Abs()
 {
@@ -59,13 +75,16 @@ CCAR::start();//scope operator
 
 }
 };
-//--------------------------
+--------------------------
 int main(int argc, const char * argv[]) {
 CBMW bmw;
-// bmw.light=3;
+bmw.light=3;
+/**
+ *依序執行CBNW的start,Abs,stop指令*/
 bmw.start();
 bmw.Abs();
 bmw.stop();
-
+/**
+ *回傳值0*
 return 0;
 }
