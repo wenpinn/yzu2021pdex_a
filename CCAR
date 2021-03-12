@@ -5,67 +5,145 @@
 // Created by wpfang on 2021/3/8.
 // Copyright © 2021 wpfang. All rights reserved.
 //
+
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR {
+
+/**
+* 一個CCAR class
+* 有燈和輪子
+* 
+*/
+class CCAR
+{
 private:
-string nickname;
+	string nickname;
 protected:
-int light;
-int wheel;
+	int light; //大燈
+	int wheel; //輪子
 public:
-CCAR() :light(2)
-{
-wheel = 5;
-cout << "car's constructor(wheel=" << wheel << ")" << endl;
-}
-CCAR(string nickname) :light(2)
-{
-wheel = 5;
-this->nickname = nickname;
-cout << "car's constructor(nickname=" << nickname << ")" << endl;
-}
-~CCAR()
-{
-cout << "car's destructor" << "(" << nickname << ")" << endl;
-}
-void start()
-{
-cout << "car's start" << endl;
-}
-void stop()
-{
-cout << "car's stop" << endl;
-}
-void turn()
-{
-cout << "car's turn" << endl;
-}
+	/**
+	* public
+	* CCAR的建構子之一
+	* 不傳入引數
+	* 但是將light設為2
+	*/
+	CCAR() :light(2)
+	{
+		wheel = 5;
+		cout << "car's constructor(wheel=" << wheel << ")" << endl;
+	}
+
+	/**
+	* public
+	* CCAR的建構子之一
+	* 不傳入引數
+	* 將light設為2
+	* wheel設為5
+	* cout訊息
+	*/
+	CCAR(string nickname) :light(2) //CCAR的建構子 傳入nickname
+	{
+		wheel = 5;
+		this->nickname = nickname;
+		cout << "car's constructor(nickname=" << nickname << ")" << endl;
+	}
+
+	/**
+	* public
+	* CCAR的解構子
+	* cout訊息
+	*/
+	~CCAR()
+	{
+		cout << "car's destructor" << "(" << nickname << ")" << endl;
+	}
+
+	/**
+	* 汽車啟動
+	*/
+	void start() //汽車啟動
+	{
+		cout << "car's start" << endl;
+	}
+
+	/**
+	* 汽車停止
+	*/
+	void stop() //汽車停止
+	{
+		cout << "car's stop" << endl;
+	}
+
+	/**
+	* 汽車轉向
+	*/
+	void turn()
+	{
+		cout << "car's turn" << endl;
+	}
 };
 //--------------------------
-class CBMW : public CCAR {
-public:
-CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
-~CBMW() { cout << "bmw's destructor" << endl; }
-void Abs()
-{
-cout << "bmw's abs" << endl;
-}
-void start()
-{
-cout << "bmw's start" << endl;
-CCAR::start();//scope operator
 
-}
+
+/**
+* 一個CBMW class
+* 繼承CCAR class
+* 
+*/
+class CBMW : public CCAR
+{
+public:
+	/**
+	* public
+	* CBMW的建構子
+	* 將light設為4
+	* wheel設為4
+	* cout訊息
+	*/
+	CBMW()
+	{
+		light = 4;
+		wheel = 4;
+		cout << "bmw's constructor" << endl;
+	}
+
+	/**
+	* public
+	* CBMW的解構子
+	*/
+	~CBMW()
+	{
+		cout << "bmw's destructor" << endl;
+	}
+
+	/**
+	* cout訊息
+	*/
+	void Abs()
+	{
+		cout << "bmw's abs" << endl;
+	}
+
+	/**
+	* cout訊息
+	*/
+	void start()
+	{
+		cout << "bmw's start" << endl;
+		CCAR::start();//scope operator
+
+	}
 };
 //--------------------------
-int main(int argc, const char * argv[]) {
-CBMW bmw;
-// bmw.light=3;
-bmw.start();
-bmw.Abs();
-bmw.stop();
+int main(int argc, const char* argv[])
+{
+	CBMW bmw;
+	// bmw.light=3;
+	bmw.start();
+	bmw.Abs();
+	bmw.stop();
 
-return 0;
+	return 0;
 }
