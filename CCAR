@@ -1,13 +1,24 @@
-//
-// main.cpp
-// OOP_DEMO_CAR
-//
-// Created by wpfang on 2021/3/8.
-// Copyright © 2021 wpfang. All rights reserved.
-//
+/**
+ *建構車子的基本型態及執行動作；使用繼承的方式增加或改寫其他品牌的車子
+ *author 陳俞蓁
+ *version 1.0
+ *since 2021/03/12
+ */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ *類別CCAR
+ *私人:別名字串
+ *保護:燈、輪子
+ *公開:
+ *建構子CCAR 初始燈為兩個、初始輪子為五個，印出車子的建構子輪子有幾個
+ *建構子CCAR 從CCAR建構子中傳入別名字串；初始燈為兩個、初始輪子為五個；將建構子傳入的字串指定給類別的字串，印出建構子別名
+ *解構子 離開程式前印出解構子別名
+ *車子啟動
+ *車子停止
+ *車子移動
+ */
 class CCAR {
 private:
 string nickname;
@@ -20,6 +31,7 @@ CCAR() :light(2)
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
@@ -30,6 +42,7 @@ cout << "car's constructor(nickname=" << nickname << ")" << endl;
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+
 void start()
 {
 cout << "car's start" << endl;
@@ -44,6 +57,15 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ *類別CBMW繼承類別CCAR
+ *公開:
+ *CBMW建構子 初始燈為四個、初始輪子為四個，印出bmw的建構子
+ *CBMW解構子 印出bmw的解構子
+ *新增abs功能
+ *改寫bmw啟動，使用CCAR的start
+ */
+
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
@@ -60,6 +82,12 @@ CCAR::start();//scope operator
 }
 };
 //--------------------------
+/**
+ *宣告類別CBMW的物件bmw
+ *bmw 啟動
+ *bmw abs
+ *bmw 停止
+ */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
