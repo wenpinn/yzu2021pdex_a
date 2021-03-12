@@ -5,9 +5,21 @@
 // Created by wpfang on 2021/3/8.
 // Copyright © 2021 wpfang. All rights reserved.
 //
+/**
+* @author s1092025
+* @version 1.0
+* @date 2021/03/12
+*/
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+* @brief CCAR此架構的名稱
+* ＠return 無
+*private無法被外部讀取 定義私有字串nickname
+*protected保護只有繼承的可以讀取 light大燈 wheel輪子
+*public 可被外部讀取 定義公開的建構子 解構子
+*/
 class CCAR {
 private:
 string nickname;
@@ -15,43 +27,89 @@ protected:
 int light;
 int wheel;
 public:
+/**
+* @brief CCAR()建構子之一 將light初始值設為2
+* @return 無
+*wheel設為5
+*/
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+* @brief CCAR()建構子之一 將light初始值設為2
+* @return 無
+*wheel設為5
+*/
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+* @brief ～CCAR()解構子 
+* @return 無
+*/
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+* @brief 汽車開始動  
+* @return 無
+*/
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+* @brief 汽車停止
+* @return 無
+*/
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+* @brief 汽車轉向
+* @return 無
+*/
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+* @brief CBMW繼承CCAR的架構名稱
+* @return 無
+*public 可被外部讀取 定義公開的建構子 解構子
+*/
 class CBMW : public CCAR {
 public:
+/**
+* @brief CBMW()建構子之一
+* @return 無
+*設light為4 wheel為4
+*/
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+* @brief ~CBMW()解構子之一
+* @return 無
+*/
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+* @return 無
+*/
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+* @return 無
+*/
 void start()
 {
 cout << "bmw's start" << endl;
