@@ -8,64 +8,72 @@
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR {
+class CCAR {    
 private:
 string nickname;
 protected:
-int light;
-int wheel;
+int light;  //**< 設定車頭燈變數 */
+int wheel;  //**< 設定輪子變數 */
 public:
-CCAR() :light(2)
-{
-wheel = 5;
-cout << "car's constructor(wheel=" << wheel << ")" << endl;
-}
-CCAR(string nickname) :light(2)
-{
-wheel = 5;
-this->nickname = nickname;
-cout << "car's constructor(nickname=" << nickname << ")" << endl;
-}
+＊////////////////////////////////////////////////////////////
+// CCAR() :light(2) 
+// {
+// wheel = 5;                                                   -------->執行第一組建構子（當輪子數已輸入時）
+// cout << "car's constructor(wheel=" << wheel << ")" << endl;  
+// }
+//////////////////////////////////////////////////////////////
+*/////////////////////////////////////////////////////////////
+// CCAR(string nickname) :light(2)
+// {
+// wheel = 5;
+// this->nickname = nickname;                                  ------------>執行第二組建構子，此組程式碼可依照喜歡之車的型號來命名
+// cout << "car's constructor(nickname=" << nickname << ")" << endl;
+// }
+///////////////////////////////////////////////////////////////
 ~CCAR()
 {
-cout << "car's destructor" << "(" << nickname << ")" << endl;
+cout << "car's destructor" << "(" << nickname << ")" << endl;  //**< 輸出第三組執行結果，即為其解構子，也可以喜歡之車的型號來命名＊/
 }
-void start()
+void start()    //!< 設定開始的函式
 {
-cout << "car's start" << endl;
+cout << "car's start" << endl; /* 車子啟動囉！！！！*/
 }
-void stop()
+void stop()    //!< 設定停止的函式
 {
-cout << "car's stop" << endl;
+cout << "car's stop" << endl; /*車子準備暫停*/
 }
-void turn()
+void turn()   //!< 設定轉彎的函式
 {
-cout << "car's turn" << endl;
+cout << "car's turn" << endl; /*可命令車子轉彎*/
 }
 };
 //--------------------------
-class CBMW : public CCAR {
-public:
-CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
-~CBMW() { cout << "bmw's destructor" << endl; }
-void Abs()
+*///////////////////////////////////////////////////////////////////
+//
+// class CBMW : public CCAR {
+// public:
+// CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }--------->設定bmw的各種基本配件，可設為另一類別
+// ~CBMW() { cout << "bmw's destructor" << endl; }
+////////////////////////////////////////////////////////////////////
+void Abs()  /*設定煞車的函式*/
 {
 cout << "bmw's abs" << endl;
 }
-void start()
+void start()   /*設定發動的函式*/
 {
-cout << "bmw's start" << endl;
+cout << "bmw's start" << endl; //*發動*//
 CCAR::start();//scope operator
 
 }
 };
 //--------------------------
-int main(int argc, const char * argv[]) {
-CBMW bmw;
+*/////////////////////////////////////////////
+//int main(int argc, const char * argv[]) {
+//CBMW bmw;
 // bmw.light=3;
-bmw.start();
-bmw.Abs();
-bmw.stop();
-
+//bmw.start();---------------------------->輸出全部我們設定之程式
+//bmw.Abs();
+//bmw.stop();
+/////////////////////////////////////////////////
 return 0;
 }
