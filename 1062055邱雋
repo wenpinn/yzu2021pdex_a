@@ -1,0 +1,115 @@
+/**
+* @author 1062055邱雋
+* @version 1.0
+* @since 2021-03-12
+*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class CCAR {
+/**
+* 設定一個CCAR類別
+* @param 宣告私人字串nickname
+* @param 宣告proteced變數light,wheel
+*/
+private:
+string nickname;
+protected:
+int light;
+int wheel;
+public:
+CCAR() :light(2)
+{
+/**
+* @param wheel = 5
+*/
+wheel = 5;
+cout << "car's constructor(wheel=" << wheel << ")" << endl;
+}
+
+CCAR(string nickname) :light(2)
+{
+/**
+* 建構子
+* @param wheel = 5
+* @param this->nickname = nickname
+*/
+wheel = 5;
+this->nickname = nickname;
+cout << "car's constructor(nickname=" << nickname << ")" << endl;
+}
+
+~CCAR()
+{
+/**
+* 解構子
+*/
+cout << "car's destructor" << "(" << nickname << ")" << endl;
+}
+/**
+* 新增start,stop,turn函式
+*/
+void start()
+{
+cout << "car's start" << endl;
+}
+void stop()
+{
+cout << "car's stop" << endl;
+}
+void turn()
+{
+cout << "car's turn" << endl;
+}
+};
+//--------------------------
+
+class CBMW : public CCAR {
+/**
+* @inheritDoc CBMW公開繼承CCAR的內容
+*/
+public:
+/**
+* 從父類別繼承的參數
+* param light跟wheel是從父類別CCAR繼承的
+*/
+CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+~CBMW() { cout << "bmw's destructor" << endl; }
+
+void Abs()
+{
+/**
+* 新增一個名為Abs的函式
+*/
+cout << "bmw's abs" << endl;
+}
+
+void start()
+{
+/**
+* 修改CCAR中的start函式
+*/
+cout << "bmw's start" << endl;
+CCAR::start();//scope operator
+
+}
+};
+//--------------------------
+
+int main(int argc, const char * argv[]) {
+/**
+* @param int argc, const char * argv[]
+* 在主程式裡宣告CBMW bmw
+* 執行start,Abs,stop
+* @return 0
+*/
+CBMW bmw;
+// bmw.light=3;
+bmw.start();
+bmw.Abs();
+bmw.stop();
+
+return 0;
+}
