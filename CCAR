@@ -1,31 +1,59 @@
-//
-// main.cpp
-// OOP_DEMO_CAR
-//
-// Created by wpfang on 2021/3/8.
-// Copyright © 2021 wpfang. All rights reserved.
-//
+/**
+ *@file CCAR
+ *@brief A brief history of CCAR comments.
+ *@author 1092055 賈承恩
+ *@since 110/3/12
+ *@version 1.0
+ *
+ */
 #include <iostream>
 #include <string>
 using namespace std;
+/** 宣告一個類別，其名稱為CCAR
+  * @param input nothing
+  * @param output nothing
+  * @return nothing 
+  * 記得class最後的大括號後面要加一個分號
+  */
 class CCAR {
+/**
+  * 將其變數設為私人(private)（字串名稱為nickname）
+  */
 private:
 string nickname;
+  
+/**
+  * 將其變數設為保護(protected) (變數的數量分別為light,wheel)
+  */
 protected:
 int light;
 int wheel;
+/**
+  * 公開(public)其中函式
+  */  
 public:
+/**
+  *解構子：把資源清空（沒有參數可傳回值）
+  *一個類別，沒有被指定參數
+  */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+  *一個類別，被指定string
+  */ 
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+  *解構子：直接執行（佔記憶體空間可直接執行）（可以有參數沒有回傳值）
+  *一個類別，結束時個別所做的動作
+  */ 
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
@@ -44,22 +72,46 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+  *繼承CCAR的類別，除了private之外，其他都有被繼承
+  */ 
 class CBMW : public CCAR {
+/**
+  * 公開(public)其中函式
+  */ 
 public:
+/**
+  * 一個類別，沒有被指定參數
+  */ 
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+  * 一個類別，結束時各別所做的動作
+  */ 
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+  * 增加新功能
+  */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+  * 修改功能
+  * Abs函式輸出文字後用繼承CCAR的start函式
+  */
 void start()
 {
 cout << "bmw's start" << endl;
 CCAR::start();//scope operator
-
 }
 };
 //--------------------------
+/**
+  * 主程式
+  * 宣告一個CBMW類別，其名稱為bmw
+  * bmw.start()為CBMW的start
+  * bmw.Abs()為CBMW的Abs
+  */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
