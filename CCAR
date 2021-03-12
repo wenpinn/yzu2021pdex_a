@@ -1,50 +1,58 @@
-//
-// main.cpp
-// OOP_DEMO_CAR
-//
-// Created by wpfang on 2021/3/8.
-// Copyright © 2021 wpfang. All rights reserved.
-//
+/**
+ * 
+ * 
+ * @author  1092021 陳昱寧
+ * @version 1.0
+ * @since   2021-03-12
+ */
 #include <iostream>
 #include <string>
 using namespace std;
 class CCAR {
-private:
-string nickname;
-protected:
+private: /** <無法被外部進行讀取、更改、繼承 */
+string nickname; 
+protected: /** <無法被外部進行讀取、更改，但可以被繼承 */
+/**
+ * a private variable.
+ * the number of light.
+ */
 int light;
+/**
+ * a private variable.
+ * the number of wheel.
+ */
 int wheel;
-public:
-CCAR() :light(2)
+public: /** <可以被外部進行讀取、更改、繼承 */
+CCAR() :light(2) /** light=2時建構時會執行這個東西 */
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
-CCAR(string nickname) :light(2)
+CCAR(string nickname) :light(2) /** <建構時會執行這個東西 */
 {
 wheel = 5;
-this->nickname = nickname;
+this->nickname = nickname; /** <將class裡面的nickname等於外面輸入的nickname */
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
-~CCAR()
+~CCAR() /** <建構結束時會執行這個東西 */
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
-void start()
+void start() /** <public的函式 */
 {
 cout << "car's start" << endl;
 }
-void stop()
+void stop() /** <public的函式 */
 {
 cout << "car's stop" << endl;
 }
-void turn()
+void turn() /** <public的函式 */
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
-class CBMW : public CCAR {
+class CBMW : public CCAR { /** <架構名稱CBMW 繼承CCAR的public */
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
@@ -55,13 +63,13 @@ cout << "bmw's abs" << endl;
 void start()
 {
 cout << "bmw's start" << endl;
-CCAR::start();//scope operator
+CCAR::start();//scope operator /** <scope operator */
 
 }
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
-CBMW bmw;
+CBMW bmw; /** <以bmw建造CBMW架構的類別 */
 // bmw.light=3;
 bmw.start();
 bmw.Abs();
