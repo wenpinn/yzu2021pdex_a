@@ -16,10 +16,12 @@ int light;
 int wheel;
 public:
 CCAR() :light(2)
+////////////////////
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+//////////////建構值
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
@@ -32,16 +34,17 @@ cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
 void start()
 {
+////////////
 cout << "car's start" << endl;
-}
+}///////////車子開始跑了
 void stop()
-{
+{//////////車子停了
 cout << "car's stop" << endl;
 }
 void turn()
-{
+{///////////
 cout << "car's turn" << endl;
-}
+}//////////車子轉向了
 };
 //--------------------------
 class CBMW : public CCAR {
@@ -49,23 +52,26 @@ public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
 void Abs()
-{
+{///////////
 cout << "bmw's abs" << endl;
-}
+}//////////車子的電腦急停了
+///////////
 void start()
 {
 cout << "bmw's start" << endl;
 CCAR::start();//scope operator
 
-}
+}//////////車子又開始跑了
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
 CBMW bmw;
+//////////////
 // bmw.light=3;
 bmw.start();
 bmw.Abs();
 bmw.stop();
+//////車子做了跑跟停跟電腦急停的森柏格動作
 
 return 0;
 }
