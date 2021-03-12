@@ -8,39 +8,45 @@
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR {
+class CCAR {    
 private:
 string nickname;
 protected:
-int light;
-int wheel;
+int light; //**<set light number*//
+int wheel; //**<set wheel number*//
 public:
-CCAR() :light(2)
-{
-wheel = 5;
-cout << "car's constructor(wheel=" << wheel << ")" << endl;
-}
-CCAR(string nickname) :light(2)
-{
-wheel = 5;
-this->nickname = nickname;
-cout << "car's constructor(nickname=" << nickname << ")" << endl;
-}
-~CCAR()
-{
-cout << "car's destructor" << "(" << nickname << ")" << endl;
-}
+*///////////////////////////////////////////////////////////////////
+//CCAR() :light(2)
+//{
+//wheel = 5;
+//cout << "car's constructor(wheel=" << wheel << ")" << endl;---------run first constructor
+//}
+////////////////////////////////////////////////////////////////////
+*///////////////////////////////////////////////////////////////////
+//CCAR(string nickname) :light(2)
+//{
+//wheel = 5;
+//this->nickname = nickname;
+//cout << "car's constructor(nickname=" << nickname << ")" << endl;--------run second constructor
+//}
+////////////////////////////////////////////////////////////////////
+*///////////////////////////////////////////////////////////////////
+//~CCAR()
+//{
+//cout << "car's destructor" << "(" << nickname << ")" << endl;
+//}
+////////////////////////////////////////////////////////////////////
 void start()
 {
-cout << "car's start" << endl;
+cout << "car's start" << endl;  //*轟隆隆隆隆衝衝衝衝引擎發動//
 }
 void stop()
 {
-cout << "car's stop" << endl;
+cout << "car's stop" << endl;  //*塞車了怎麼辦ＰＵＩＰＵＩ//
 }
 void turn()
 {
-cout << "car's turn" << endl;
+cout << "car's turn" << endl; //*頭搖又尾擺 飄移境界//
 }
 };
 //--------------------------
@@ -50,11 +56,11 @@ CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
 void Abs()
 {
-cout << "bmw's abs" << endl;
+cout << "bmw's abs" << endl; //*煞車 注意安全！//
 }
 void start()
 {
-cout << "bmw's start" << endl;
+cout << "bmw's start" << endl; //*引擎發動so come on//
 CCAR::start();//scope operator
 
 }
