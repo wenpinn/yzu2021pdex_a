@@ -8,28 +8,44 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
+
+//CCAR class
 class CCAR {
+//private var
 private:
 string nickname;
+
+//protected var
 protected:
 int light;
 int wheel;
+
+//public function
 public:
+
+// set light and wheel nums and print wheel nums
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+
+//function overloading
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+
+//destructor
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+
+//member function 
 void start()
 {
 cout << "car's start" << endl;
@@ -44,6 +60,8 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+
+//inheritance class 
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
@@ -60,6 +78,8 @@ CCAR::start();//scope operator
 }
 };
 //--------------------------
+
+//main program
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
