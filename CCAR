@@ -1,3 +1,9 @@
+/**
+* @brief       課堂練習項目
+* @author      許靜玟
+* @date        2021-3-12
+* 
+**********************************************************************************
 //
 // main.cpp
 // OOP_DEMO_CAR
@@ -8,53 +14,118 @@
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR {
-private:
+/**
+ * @brief CCAR是一個普通類別名稱
+ * 定義一私用字串nickname；保護等級的車燈、輪子；公開的建構子、解構子及Function
+ * @return 無
+ */
+class CCAR { 
+private: 
 string nickname;
 protected:
-int light;
-int wheel;
+int light; 
+int wheel; 
 public:
+/**
+ * @brief CCAR()是一個建構子，並設定light初始值為２
+ * 
+ * @return 無
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+ * @brief CCAR()是另一個建構子，並設定light初始值為２
+ * 需要帶參數nickname
+ * @return 無
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ * @brief ~CCAR()是一個解構子
+ * 
+ * @return 無
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ * @brief start是一個普通成員函數
+ * 
+ * @return 無
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+ * @brief stop是一個普通成員函數
+ * 
+ * @return 無
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+ * @brief turn是一個普通成員函數
+ * 
+ * @return 無
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ * @brief CBMW是一個繼承於CCAR的普通類別名稱
+ * 定義一公開的建構子、解構子及Function
+ * @return 無
+ */
 class CBMW : public CCAR {
 public:
+/**
+ * @brief CBMW()是一個建構子
+ * 
+ * @return 無
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+ * @brief CBMW()是一個解構子
+ * 
+ * @return 無
+ */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ * @brief Abs是一個普通成員函數
+ * 
+ * @return 無
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ * @brief start是一個普通成員函數
+ * 
+ * @return 無
+ */
 void start()
 {
 cout << "bmw's start" << endl;
+/**
+ * @brief start是一個呼叫於CCAR類別的普通成員函數
+ * 
+ * @return 無
+ */
 CCAR::start();//scope operator
 
 }
