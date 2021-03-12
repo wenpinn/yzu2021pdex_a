@@ -1,21 +1,18 @@
-//
-// main.cpp
-// OOP_DEMO_CAR
-//
-// Created by wpfang on 2021/3/8.
-// Copyright © 2021 wpfang. All rights reserved.
-//
+/**
+ * @auther 張劭禕
+ * @since 2021-3-12
+ */
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR {
-private:
-string nickname;
-protected:
+class CCAR { //新增一個類別CCAR
+private: //建立私人的資料，不能任意更改
+string nickname; 
+protected: //建立保護的資料，只有子類別可以更改
 int light;
 int wheel;
-public:
-CCAR() :light(2)
+public: //建立公開的資料，可以隨意更改
+CCAR() :light(2) ///建構子，需和類別同名，在啟動記憶體時不用呼叫就會自動執行，設定輪子和燈光的值
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
@@ -23,14 +20,14 @@ cout << "car's constructor(wheel=" << wheel << ")" << endl;
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
-this->nickname = nickname;
+this->nickname = nickname; //將原本的nickname改為傳入的nickname，如果只打nickname＝nickname的話就不會改到在private裡的nickname
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
-~CCAR()
+~CCAR() //解構子，在離開記憶體時會自動執行
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
-void start()
+void start() //建立函式
 {
 cout << "car's start" << endl;
 }
@@ -44,7 +41,7 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
-class CBMW : public CCAR {
+class CBMW : public CCAR { //新增一個類別CBMW，繼承CCAR類別的所有功能，可以增加新的功能和修改舊功能
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
@@ -55,17 +52,15 @@ cout << "bmw's abs" << endl;
 void start()
 {
 cout << "bmw's start" << endl;
-CCAR::start();//scope operator
-
+CCAR::start(); //scope operator 範圍運算子
 }
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
-CBMW bmw;
+CBMW bmw; //宣告一個CBMW的類別叫做bmw
 // bmw.light=3;
 bmw.start();
 bmw.Abs();
 bmw.stop();
-
 return 0;
 }
