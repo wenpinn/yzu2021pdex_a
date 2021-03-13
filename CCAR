@@ -5,10 +5,21 @@
 // Created by wpfang on 2021/3/8.
 // Copyright © 2021 wpfang. All rights reserved.
 //
+/*
+*@comment out for CCAR
+*@edited by ttt238 on 2021/3/13
+*@new version
+*/
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+*create a class called CCAR
+*/
 class CCAR {
+/**
+*will not influence by other object, and will not be inherit
+*/
 private:
 string nickname;
 protected:
@@ -23,35 +34,65 @@ cout << "car's constructor(wheel=" << wheel << ")" << endl;
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
+/**
+*put a value into private-nickname
+*/
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+*finish a class
+*/
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+member function
+*/
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+*member function
+*/
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+*member function
+*/
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+*CBMW inherit CCAR will inherit things except private
+*/
 class CBMW : public CCAR {
 public:
+/**
+*create a class and didn't assingment to be any variable
+*/
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+*finish a class
+*/
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+*member function
+*/
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+*member function, will inherit CCAR's start
+*/
 void start()
 {
 cout << "bmw's start" << endl;
@@ -61,10 +102,22 @@ CCAR::start();//scope operator
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
+/**
+*create a CBMW class called bmw
+*/
 CBMW bmw;
 // bmw.light=3;
+/**
+*void start in CBMW
+*/
 bmw.start();
+/**
+*void abs in CBMW
+*/
 bmw.Abs();
+/**
+*void stop in CBMW
+*/
 bmw.stop();
 
 return 0;
