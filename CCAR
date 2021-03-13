@@ -1,33 +1,59 @@
 /**
  * @auther 張劭禕
+ * @file iostream,string
  * @since 2021-3-12
  */
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR { //新增一個類別CCAR
-private: //建立私人的資料，不能任意更改
+/**
+ * @brief 新增一個類別CCAR
+ 
+ * 在裡面建立私人的資料(private)，不能任意更改
+ * 建立保護的資料(protected)，只有子類別可以更改
+ * 建立公開的資料(public)，可以隨意更改
+ */
+class CCAR { 
+private: 
 string nickname; 
-protected: //建立保護的資料，只有子類別可以更改
+protected: 
 int light;
 int wheel;
-public: //建立公開的資料，可以隨意更改
-CCAR() :light(2) ///建構子，需和類別同名，在啟動記憶體時不用呼叫就會自動執行，設定輪子和燈光的值
+public:
+/**
+ * @brief 建構子宣告
+ 
+ * 需和類別同名，在啟動記憶體時不用呼叫就會自動執行，這裡用來設定輪子和燈光的值
+ */
+CCAR() :light(2) 
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+ * @brief 建構子宣告
+ 
+ * 將原本的nickname改為傳入的nickname，如果只打nickname＝nickname的話就不會改到在private裡的nickname
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
-this->nickname = nickname; //將原本的nickname改為傳入的nickname，如果只打nickname＝nickname的話就不會改到在private裡的nickname
+this->nickname = nickname; 
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
-~CCAR() //解構子，在離開記憶體時會自動執行
+/**
+ * @brief 解構子宣告
+ 
+ * 解構子在離開記憶體時會自動執行
+ */
+~CCAR() 
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
-void start() //建立函式
+/**
+ * @brief 啟動、停止、轉彎的函式宣告
+ */
+void start()
 {
 cout << "car's start" << endl;
 }
@@ -41,10 +67,24 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
-class CBMW : public CCAR { //新增一個類別CBMW，繼承CCAR類別的所有功能，可以增加新的功能和修改舊功能
+/**
+ * @brief 新增一個類別CBMW
+ 
+ * 繼承CCAR類別的所有功能，可以增加新的功能和修改舊功能
+ */
+class CBMW : public CCAR { 
 public:
+/**
+ * @brief 建構子宣告
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+ * @brief 解構子宣告
+ */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ * @brief ABS系統、啟動的函式宣告
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
@@ -57,8 +97,14 @@ CCAR::start(); //scope operator 範圍運算子
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
-CBMW bmw; //宣告一個CBMW的類別叫做bmw
+/**
+ * @brief 宣告一個CBMW的類別叫做bmw
+ */
+CBMW bmw; 
 // bmw.light=3;
+/**
+ * @brief 函式運作
+ */
 bmw.start();
 bmw.Abs();
 bmw.stop();
