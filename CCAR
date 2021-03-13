@@ -1,71 +1,129 @@
-//
-// main.cpp
-// OOP_DEMO_CAR
-//
-// Created by wpfang on 2021/3/8.
-// Copyright © 2021 wpfang. All rights reserved.
-//
+/**
+ * @author 1092031許桐榮
+ * @ver 1.0
+ */
+ /**
+  * 使用iostream和string的標頭檔
+  * 使用命名空間std
+  */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ * @brief 定義CCAR
+ *  nickname 在 CCAR 做使用
+ */
 class CCAR {
 private:
 string nickname;
+/**
+ * @brief light , wheel 能夠在允許的地方做存取和修改
+ */
 protected:
 int light;
 int wheel;
+/**
+ * @brief 能夠在其他地方使用
+ */
 public:
+/**
+ * @brief 先執行light 為 2 , wheel 為 5 , 並輸出字元
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+ * @brief 先執行light 為 2 , wheel 為 5 
+ * 使用指標this 將 nickname 存入
+ * 輸出字元和nickname
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ * @brief 最後執行 , 並輸出字元
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ * @brief 用來輸出字元的CCAR start function
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+ * @brief 用來輸出字元的CCAR stop function
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+ * @brief 用來輸出字元的CCAR turn function
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ * @brief class CBMW 繼承 CCAR 的功能
+ */
 class CBMW : public CCAR {
 public:
+/**
+ * @brief 先執行light 為 4 , wheel 為 4 , 並輸出字元
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+ * @brief 最後執行 , 並輸出字元
+ */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ * @brief 輸出 Abs 的 function
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ * @brief 輸出 start 的 function
+ */
 void start()
 {
 cout << "bmw's start" << endl;
+/**
+ * @brief 覆蓋掉 CCAR 的 start function
+ */
 CCAR::start();//scope operator
-
+//CCAR c;
+//c.start();
 }
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
+/**
+ * @brief CBMW 設定成 bmw
+ */
 CBMW bmw;
 // bmw.light=3;
+/**
+ * @brief 執行 start function , Abs function , stop function
+ */
 bmw.start();
 bmw.Abs();
 bmw.stop();
-
+/ **
+ * 回傳 0
+ * /
 return 0;
 }
