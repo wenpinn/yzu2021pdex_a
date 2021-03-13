@@ -80,7 +80,6 @@ CCAR::start();//scope operator
 //c.start();
 }
 };
-//--------------------------
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 bmw.start();
