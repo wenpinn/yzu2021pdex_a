@@ -28,7 +28,7 @@ CCAR() :light(2) /** light=2時建構時會執行這個東西 */
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
-CCAR(string nickname) :light(2) /** <建構的時候會執行這個東西 */
+CCAR(string nickname) :light(2) /** <建構時會執行這個東西 */
 {
 wheel = 5;
 this->nickname = nickname; /** <將class裡面的nickname等於外面輸入的nickname */
