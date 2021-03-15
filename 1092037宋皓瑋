@@ -1,0 +1,79 @@
+/**
+ * 
+ * 
+ * @author  1092021宋皓瑋
+ * @version 1.0
+ * @since   2021-03-15
+ */
+#include <iostream>
+#include <string>
+using namespace std;
+class CCAR {
+private: /** <無法被進行讀取、更改、繼承 */
+string nickname; 
+protected: /** <無法被進行讀取、更改，但可以被繼承 */
+/**
+ * a private variable.
+ * the number of light.
+ */
+int light;
+/**
+ * a private variable.
+ * the number of wheel.
+ */
+int wheel;
+public: /** <可以被讀取、更改、繼承 */
+CCAR() :light(2) /** light=2時建構時會執行這個東西 */
+{
+wheel = 5;
+cout << "car's constructor(wheel=" << wheel << ")" << endl;
+}
+CCAR(string nickname) :light(2) /** <建構時會執行這個東西 */
+{
+wheel = 5;
+this->nickname = nickname; /** <將class裡面的nickname等於外面輸入的nickname */
+cout << "car's constructor(nickname=" << nickname << ")" << endl;
+}
+~CCAR() /** <建構結束時會使用這個東西 */
+{
+cout << "car's destructor" << "(" << nickname << ")" << endl;
+}
+void start() /** <public的函式 */
+{
+cout << "car's start" << endl;
+}
+void stop() /** <public的函式 */
+{
+cout << "car's stop" << endl;
+}
+void turn() /** <public的函式 */
+{
+cout << "car's turn" << endl;
+}
+};
+//--------------------------
+class CBMW : public CCAR { /** <架構名稱CBMW 繼承CCAR的public */
+public:
+CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+~CBMW() { cout << "bmw's destructor" << endl; }
+void Abs()
+{
+cout << "bmw's abs" << endl;
+}
+void start()
+{
+cout << "bmw's start" << endl;
+CCAR::start();//scope operator /** <scope operator */
+
+}
+};
+//--------------------------
+int main(int argc, const char * argv[]) {
+CBMW bmw; /** <以bmw建造CBMW架構的類別 */
+// bmw.light=3;
+bmw.start();
+bmw.Abs();
+bmw.stop();
+
+return 0;
+}
