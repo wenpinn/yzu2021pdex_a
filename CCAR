@@ -1,57 +1,108 @@
-//
-// main.cpp
-// OOP_DEMO_CAR
-//
-// Created by wpfang on 2021/3/8.
-// Copyright © 2021 wpfang. All rights reserved.
-//
+/**
+ * @author  1082055 王維亭
+ * @version 1.0
+ * @since   2021-03-12
+ */
 #include <iostream>
 #include <string>
 using namespace std;
 class CCAR {
 private:
+/** 
+ * a private variable.
+ * the nickename of car.
+ */
 string nickname;
+/** 
+ * a private variable.
+ * the nickename of car.
+ */
 protected:
+/**
+ * a protected variable.
+ * the number of light.
+ */
 int light;
+/**
+ * a protected variable.
+ * the number of wheel.
+ */
 int wheel;
+
 public:
+/**
+ * a constructor with no parameter.
+ * two methods set member data light and wheel.
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+ * a constructor with a parameter nickname.
+ * two methods set member data light and wheel.
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ * a destructor.
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ * a public member funtion.
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+ * a public member funtion.
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+ * a public member funtion.
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+
+/**
+ * a class CMBW public inherit CCAR.
+ */
 class CBMW : public CCAR {
 public:
+/**
+ * a constructor.
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+ * a destructor.
+ */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ * a public member funtion.
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ * a public member funtion redefine CCAR's start function.
+ */
 void start()
 {
 cout << "bmw's start" << endl;
@@ -61,11 +112,18 @@ CCAR::start();//scope operator
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
+/**
+ * declare a CBMW class.
+ * CCAR's constructor run first, then CBMW's constructor run.
+ */
 CBMW bmw;
 // bmw.light=3;
 bmw.start();
 bmw.Abs();
 bmw.stop();
-
+/**
+ * end of program.
+ * CBMW's destructor run first, then CCAR's destructor run.
+ */
 return 0;
 }
